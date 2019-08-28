@@ -1,8 +1,9 @@
 let toggle=false;
 angular.module('spoonFeed',[])
-.controller('mainCtrl',[function(){
+.controller('mainCtrl',function(){
         var self=this;
         let filteredcurrently=false;
+        self.noofpostsvisiblecurrently=12;
         self.filteredarray=[];
         self.availabletags=[];
         self.posts=[
@@ -10,10 +11,10 @@ angular.module('spoonFeed',[])
             {id:2,title:"Get a taste of mischievous 'Beetlejuice' musical with 'Beautiful Sound' video",source:'Mashable',tag:'Entertainment',img:'mashable.jpg',show:true},
             {id:3,title:"Spider-Man: Far From Home's Mysterio Concept Art Is Even Weirder",source:'Gizmodo',tag:'Entertainment',img:'io9.png',show:true},  
             {id:4,title:'Waiting For The Revolution At Soccer Analytics Bootcamp',source:'Deadspin',tag:  'Sports',img:'deadspin.jpg',show:true},
-            {id:5,title:"Chase customers have ONE MONTH left to opt out of binding arbitration",source:'Boing',tag:'Political',img:'boing.jpg',show:true},
+            {id:5,title:"Chase customers have ONE MONTH left to opt out of binding arbitration",source:'Boing',tag:'Political',img:'boing.jpg',show:true,Promoted:true},
             {id:6,title:"The Best Amazon Prime Day Deal is Actually at Whole Foods",source:'LifeHacker',tag:'Lifestyle',img:'lifehacker.png',show:true},
             {id:7,title:"The Oldest Ceramista in Brazil",source:'Jezebel',tag:'Arbitrary',img:'jezebel.jpg',show:true},
-            {id:8,title:"What World Of Warcraft Would Look Like Running In Unreal Engine 4",source:"Kotaku",tag:"Gaming",img:"kotaku.jpg",show:true},
+            {id:8,title:"What World Of Warcraft Would Look Like Running In Unreal Engine 4",source:"Kotaku",tag:"Gaming",img:"kotaku.jpg",show:true,Promoted:true},
             {id:9,title:"What It's Like to Use a 641 HP Lamborghini Urus as an Actual Family Car",source:"Jalopnik",tag:"Cars",img:"jalopnik.webp",show:true},
             {id:10,title:'Bankrupt Maker Faire revives, reduced to Make Community',source:'Techcrunch',tag:'Technology',img:'techcrunch.png',show:true},
             {id:11,title:"Get a taste of mischievous 'Beetlejuice' musical with 'Beautiful Sound' video",source:'Mashable',tag:'Entertainment',img:'mashable.jpg',show:true},
@@ -91,7 +92,7 @@ angular.module('spoonFeed',[])
             self.filteredarray.splice(fid,1);
         };
 
-}]);
+});
 $(document).ready(function(){
     $(".close").click(function(){
         $(".full-page-search").fadeOut(300,'swing');
@@ -120,22 +121,13 @@ $(document).ready(function(){
         }
         });
     });
-    $(".collapse-trigger").on("click",function(){
-        if(toggle===false)
-        {
-        $(".top").css("transform","rotate(50deg) translateY(6px)");
-        $(".bottom").css("transform","rotate(-50deg) translate(7px,-13px)");
-        $(".middle").css("opacity","0");
-        $(".vertical-navbar").css("margin-left","0%");
-        toggle=true;
-        }
-        else
-        {
-        $(".top").css("transform","rotate(0deg) translateY(0px)");
-        $(".bottom").css("transform","rotate(0deg) translate(0px,0px)");
-        $(".middle").css("opacity","1");
-        $(".vertical-navbar").css("margin-left","-10%");
-        toggle=false;
-        }
-    });
+    
+  document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.fixed-action-btn');
+    var instances = M.FloatingActionButton.init(elems, options);
+  });
+
+  $(document).ready(function(){
+    $('.fixed-action-btn').floatingActionButton();
+  });
 });

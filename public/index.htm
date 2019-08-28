@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html ng-app="spoonFeed">
+<head>
+    <title>HomePage-SpoonFeed</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Lilita+One&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Fredoka+One&display=swap" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Monoton" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Varela" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous" />
+    <!-- Latest compiled and minified CSS-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" />
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,800" rel="stylesheet" />
+    <!-- jQuery library-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8" />
+    <link href="css/style.css" type="text/css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Kaushan+Script&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Markazi+Text&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <meta charset="utf-8" />
+</head>
+<body ng-controller="mainCtrl as ctrl">
+<div class="full-page-search">
+    <div class="search-bar">Start Typing...<input id="search-text" type="text" /></div>
+    <div class="filter-tags" ng-init="ctrl.countNooftimes()">
+        <h3>Filter By Tags</h3>
+        <div class="chipgrid">
+            <div class="chips" ng-if="ctrl.chipdisplay" data-ng-repeat="chip in ctrl.filteredarray"><span class="filtername">{{chip}}</span><span class="chipclose" ng-click="ctrl.clearfilter($index)"><i class="fas fa-times-circle"></i></span></div>
+        </div><button class="tag" data-ng-repeat="filter in ctrl.availabletags" ng-click="ctrl.sortByTag(filter.tag)">{{filter.tag}}</button></div>
+    <div class="filter-blogs">
+        <h3>Filter By Blogs</h3><button class="tag" data-ng-repeat="post in ctrl.posts | limitTo : 9">{{post.source}}</button></div>
+    <div class="filter-blogs">
+        <h3>Sort By</h3><button class="tag">(A-Z)</button><button class="tag">(Z-A)</button><button class="tag">Spoons</button><button class="tag">Category</button></div><span class="close">X</span></div>
+<div class="mainbody">
+    <div class="most-trending-tags"><span class="trend-line"><i class="fas fa-chart-line"></i></span>
+        <div class="trending-tag" data-ng-repeat="tag in ctrl.availabletags | orderBy:'-countrepeat'| limitTo : 9"><a href="/api/tags/{{tag.tag}}">{{tag.tag}}</a></div>
+    </div>
+    <div class="bricktop">
+        <div class="Mainbrick">
+            <div class="post-tag">SpoonFeed's Best</div>
+            <div class="caption-text">People are using voice notes to pre-screen their date's personality</div>
+        </div>
+        <div class="now-trending">
+            <div class="post" data-ng-repeat="filterar in ctrl.availabletags |orderBy: '-countrepeat'| limitTo : 3"><span class="trend-post-tag">{{(ctrl.posts  |filter: {tag:filterar.tag} | limitTo:1)[0].tag}}</span><span class="trend-post-title">{{(ctrl.posts  |filter: {tag:filterar.tag} | limitTo:1)[0].title}}</span></div>
+        </div>
+    </div>
+    <div class="mainContent">
+        <div class="news-block" ng-repeat="post in ctrl.posts | limitTo: ctrl.noofpostsvisiblecurrently" ng-if="post.show">
+            <div class="filter-parent" ng-mouseover="yuphover=true" ng-mouseleave="yuphover=false" ng-init="yuphover=false">
+                <div class="post-stats" ng-if="yuphover">
+                    <div id="comments"><i class="fas fa-comments"></i> 40</div>
+                    <div id="spoons"><i class="fas fa-utensil-spoon"></i> 250</div>
+                    <div id="forks"><i class="fas fa-hand-middle-finger"></i> 90</div>
+                </div>
+                <div class="alpha-filter-mask" ng-style="{'background-image':'url(./assets/{{post.img}})'}"></div>
+            </div>
+            <div class="data">
+                <div class="from">
+                    <div id="source">{{post.source}}</div>
+                    <div id="category"><a href="/api/tags/{{post.tag}}">{{post.tag}}</a></div>
+                </div>
+                <div class="post-title">{{post.title}}</div>
+                <div class="social-share"><i class="fas fa-utensil-spoon"></i><i class="fas fa-hand-middle-finger"></i>
+                    <!--<i class="fab fa-facebook-f"></i>
+<i class="fab fa-twitter"></i>-->
+                    <!-- <i class="fab fa-snapchat-ghost"></i>--><i class="fab fa-pinterest-p"></i><i class="fab fa-tumblr"></i></div>
+                <hr class="separator" />
+                <div class="post-short-intro">To date, Edwards said, she has seen roughly 30 doctors for medical complications across California, Arizona and Louisiana. 'Most of them just shrugged their shoulders. One blatantly called me a liar,' she said</div><span class="promoted-content-indicator"
+                    ng-if="post.Promoted">This Content Is Promoted</span></div>
+        </div>
+    </div>
+    <div class="fixed-action-btn"><a class="btn-floating btn-large red"><i class="large material-icons">menu</i></a>
+        <ul>
+            <li><a class="btn-floating btn-large pulse" href="/User"><i class="material-icons">person</i></a></li>
+            <li><a class="btn-floating btn-large pulse searchbutton"><i class="material-icons">search</i></a></li>
+        </ul>
+    </div>
+    <footer class="web-footer">
+        <div class="footer-links">
+            <ul class="footer-link-items">
+                <li class="footer-link-item">Code Of Conduct</li>
+                <li class="footer-link-item">Privacy Policy</li>
+                <li class="footer-link-item">SpoonFeed 101</li>
+                <li class="footer-link-item">About Us</li>
+                <li class="footer-link-item">Contact</li>
+            </ul>
+            <div class="copyright-statement"><i class="fas fa-copyright"></i>All Rights Reserved By SpoonFeed Inc. [2019 - Present]</div>
+        </div>
+    </footer>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.8/angular.min.js"></script>
+<script src="js/script.js"></script>
+</body>
+</html>

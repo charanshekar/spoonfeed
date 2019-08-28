@@ -7,6 +7,7 @@ body{
 {
     box-sizing: border-box;
 }
+
 .mainContent
 {
     display: inline-flex;
@@ -25,18 +26,42 @@ body{
     z-index: 1;
     margin-bottom: 10%;
     margin-right: 3%;
+    /* box-shadow: 0 2px 43px -4px rgba(0,0,0,.19);
+    transition: 0.3s all; */
+}
+/* .news-block:hover{
+    transform: translateY(2px);
+    box-shadow: 0 2px 5px rgba(0,0,0,.1), 0 1px 2px rgba(0,0,0,.05);
+} */
+.promoted-content-indicator
+{
+    font-family: 'Montserrat',sans-serif;
+    font-size: 10px;
+    text-transform: uppercase;
+    width: 100%;
+    font-weight: bold;
 }
 .post-short-intro
 {
     width: 100%;
     text-align: justify;
     font-weight: 400;
+    margin-bottom: 1%;
+    font-family: 'Markazi Text', serif;
+    font-size: 1.1rem;
 }
 .social-share
 {
     font-size: 1rem;
     width: 100%;
     margin-top:7%;
+}
+.social-share i
+{
+    transition: 0.3s all;
+}
+.social-share i:hover{
+    transform: scale(1.2);
 }
 /*Social Bar Icon Colors*/
 .social-share .fa-facebook-f
@@ -117,6 +142,7 @@ color:#fffc01;
     font-weight: bold;
     width: 40%;
     background: linen;
+    color:tomato;
     padding: 2%;
     cursor: pointer;
     text-align: center;
@@ -170,6 +196,7 @@ color:#fffc01;
 {
     display:inline-flex;
     width:100%;
+    margin-bottom:3%;
 }
 .post-stats:hover + .alpha-filter-mask,.alpha-filter-mask:hover{
  transform: scale(1.4);
@@ -201,21 +228,25 @@ color:#fffc01;
 {
     display:inline-flex;
     width:100%;
-    height:400px;
-    padding-left:4%;
-    padding-right: 4%;
-    padding-top:2%;
+    height:309px;
+    background:url('../assets/mainbrick.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    padding-top:1%;
+    background-attachment: fixed;
 }
 .Mainbrick
 {
     height:100%;
-    width:70%;
+    width:80%;
     margin-right: 1%;
+    padding:2%;
 }
 .brickrowtwo
 {
     height:100%;
-    width:10%;
+    width:20%;
     background-image:linear-gradient(to right,#74ebd5 0%,#ACB6E5 100%);
     margin-right: 1%;
     font-family: 'Lilita One', cursive;
@@ -227,12 +258,8 @@ color:#fffc01;
 {
     height:100%;
     width:20%;
-    margin-right: 1%;
     display: inline-block;
-    background: #ef32d9;  /* fallback for old browsers */
-background: -webkit-linear-gradient(to right, #89fffd, #ef32d9);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to right, #89fffd, #ef32d9); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
+    padding:1.2%;
 }
 .trending-tag
 {
@@ -242,47 +269,62 @@ background: linear-gradient(to right, #89fffd, #ef32d9); /* W3C, IE 10+/ Edge, F
     margin-right: 3%;
     cursor: pointer;
 }
+.trending-tag a
+{
+    font-family: 'josefin sans', cursive;
+    text-decoration: none;
+    color: #fff;
+}
+.trend-post-tag
+{
+    display: inline-flex;
+    font-family: 'Montserrat',sans-serif;
+    font-size:11px;
+    font-weight: bold;
+    width: 100%;
+    text-transform: uppercase;
+    color:tomato;
+    padding: 1%;
+}
+.trend-post-title
+{
+    text-transform: capitalize;
+    text-align: justify;
+    color:#fff;
+    font-size: 15px;
+}
+.now-trending .post
+{
+    margin-bottom: 5%;
+    padding:1%;
+}
+.trend-post-tag{
+    margin-right: 5%;
+}
 .most-trending-tags
 {
     width:100%;
     display: inline-flex;
-    background: black;
+    background: #26a69a;
     padding: 1% 2% 1% 0%;
 }
-.imagecontainer
+.post-tag
 {
-    width:100%;
-    height:90%;
-    overflow: hidden;
-    cursor: pointer;
-}
-.zoomIn
-{
-    height:100%;
-    background: url('./assets/mainbrick.jpg');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    transition:0.3s;
-}
-.zoomIn:hover{
-    transform:scale(1.3);
-}
-.caption
-{
-    width:100%;
     height:10%;
-    color:linen;
-    font-family: 'Lilita One', cursive;
-    background: black;
-    padding:1%;
-    text-align: center;
-    cursor: pointer;
-    display: inline-flex;
+    width: 90%;
+    color:tomato;
+    font-family: 'Montserrat',sans-serif;
+    text-transform: uppercase;
+    font-size: 13px;
+    font-weight: bold
 }
 .caption-text
 {
-    width:90%;
+    height: 90%;
+    color: #fff;
+    width: 50%;
+    font-size: 2.3rem;
+    font-family: 'Montserrat',sans-serif;
 }
 .status
 {
@@ -291,7 +333,7 @@ background: linear-gradient(to right, #89fffd, #ef32d9); /* W3C, IE 10+/ Edge, F
 }
 .By
 {
-    background: url('./assets/ein.jpg');
+    background: url('../assets/ein.jpg');
     height: 100px;
     width: 100px;
     background-size: cover;
@@ -305,36 +347,6 @@ background: linear-gradient(to right, #89fffd, #ef32d9); /* W3C, IE 10+/ Edge, F
     margin-top: 40%;
     font-weight: bold;
     border: 5px solid #fff;
-}
-.searchbutton
-{
-    position: fixed;
-    bottom:50%;
-    right:3;
-    z-index: 99999;
-    background:black;
-    height:50px;
-    width:50px;
-    border-radius: 50%;
-    color:#fff;
-    padding:1%;
-    font-size: 1.5rem;
-    box-shadow: 0px 0px 24px -4px black;
-    cursor: pointer;
-}
-.collapse-trigger
-{
-    position: fixed;
-    bottom:40%;
-    right:3;
-    z-index: 99999;
-    height:50px;
-    width:50px;
-    border-radius: 50%;
-    color:#fff;
-    padding:1%;
-    font-size: 1.5rem;
-    cursor: pointer;
 }
 .full-page-search
 {
@@ -380,101 +392,6 @@ background: linear-gradient(to right, #89fffd, #ef32d9); /* W3C, IE 10+/ Edge, F
     top: 3%;
     right: 3%;
 }
-.vertical-navbar 
-		{
-   		z-index: 9999;
-    	width: 10%;
-    	height: 100%;
-    	padding-left: 1rem;
-    	padding-right: 2rem;
-        background: #FFAFBD;
-        background: -webkit-linear-gradient(to right, #ffc3a0, #FFAFBD);
-        background: linear-gradient(to right, #ffc3a0, #FFAFBD);                     
-        position: fixed;
-        margin-left: -10%;
-        transition: 0.5s all;
-		}
-		.navbar-links
-		{
-			list-style-type: none;
-			padding: initial;
-		}
-		.link-item
-		{
-		padding: .2em 0;
-		font-size: 1.3rem;
-    	line-height: 1.3;
-    	font-weight: 200;
-    	color: #777;
-    	transition: background-color 0.2s ease;
-		}
-		.link-item:hover
-		{
-			color: #00a562;
-			cursor: pointer;
-		}
-		.brand-logo img
-		{
-            height: 80px;
-            width: 120px;
-            margin-left: -1rem;
-            margin-bottom: -0.38rem;
-            margin-top: 12%;
-            z-index: 9999 !important;
-		}
-		.link-item hr
-		{
-			background-color: black;
-		}
-		.link-item hr:hover
-		{
-			background-color : #00a562;
-			cursor: pointer;
-		}
-		.top-posts
-		{
-			margin-left: 12%;
-			overflow-x: hidden;
-		}
-		.navbar-links-2
-		{
-			list-style: none;
-			padding: initial;
-		}
-		.navbar-links-2>.link-item
-		{
-			color: #00a562;
-    		border-bottom: 1px solid transparent;
-    		-webkit-transition: color,border-color .2s linear;
-    		transition: color,border-color .2s linear;
-    		font-size: 0.9rem;
-    		font-weight: bold;
-    		width: 150%;
-    		margin-bottom:3%;
-		}
-		.login-signup
-		{
-			font-size: 0.9rem;
-			font-family: helvetica;
-			margin-top:150%;
-			-webkit-transition: color,border-color .2s linear;
-    		transition: color,border-color .2s linear;
-    		font-weight: bold;
-		}
-		.login:hover,.signup:hover
-		{
-			color:#00a562;
-			cursor: pointer;
-        }
-        .bar
-        {
-            height: 6px;
-            width: 30px;
-            background: black;
-            border-radius: 3px;
-            margin-bottom: 3px;
-            transition:0.5s all;
-        }
         .tag
         {
             margin-right:0.6%;
@@ -531,3 +448,52 @@ background: linear-gradient(to right, #89fffd, #ef32d9); /* W3C, IE 10+/ Edge, F
             margin-left: 4%;
             font-size: 1.4rem;
         }
+
+
+.newsletter-subscription-block
+{
+    width:100%;
+    background: black;
+}
+.sign-up-form
+{
+    width:40%;
+    height:100%;
+}
+.sign-up-banner
+{
+    width:60%;
+    height: 100%;
+}
+/*Footer code begins*/
+.web-footer
+{
+    height:70px;
+}
+.footer-link-items
+{
+    list-style-type: none;
+    display: inline-flex;
+    width: 100%;
+}
+.footer-link-item
+{
+    margin-right:2%;
+    font-family: 'montserrat',sans-serif;
+    text-transform: uppercase;
+    font-size:0.8rem;
+    cursor: pointer;
+}
+.copyright-statement
+{
+    width: 100%;
+    font-family: 'montserrat',sans-serif;
+    font-size: 0.8rem;
+    padding-left: 3%; 
+}
+.copyright-statement i{
+    margin-right:1%;
+}
+.footer-link-item:hover{
+    text-decoration: underline;
+}
