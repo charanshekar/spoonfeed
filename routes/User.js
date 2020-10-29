@@ -57,7 +57,7 @@ User.findOne({email:req.body.email})
 
 route.post('/login',(req,res,next) => {
 passport.authenticate('local',{
-    successRedirect:'/dashboard',
+    successRedirect:'/User/dashboard',
     failureRedirect:'/User',
     failureFlash: true
 })(req,res,next);
@@ -66,6 +66,7 @@ passport.authenticate('local',{
 route.get('/logout',(req,res) =>{
 req.logout();
 console.log("logged out");
+res.redirect('/User');
 });
 
 

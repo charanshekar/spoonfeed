@@ -33,7 +33,7 @@
     <div class="filter-tags" ng-init="ctrl.countNooftimes()">
         <h3>Filter By Tags</h3>
         <div class="chipgrid">
-            <div class="chips" ng-if="ctrl.chipdisplay" data-ng-repeat="chip in ctrl.filteredarray"><span class="filtername">{{chip}}</span><span class="chipclose" ng-click="ctrl.clearfilter($index)"><i class="fas fa-times-circle"></i></span></div>
+            <div class="chips-data" ng-if="ctrl.chipdisplay" data-ng-repeat="chip in ctrl.filteredarray"><span class="filtername">{{chip}}</span><span class="chipclose" ng-click="ctrl.clearfilter($index)"><i class="fas fa-times-circle"></i></span></div>
         </div><button class="tag" data-ng-repeat="filter in ctrl.availabletags" ng-click="ctrl.sortByTag(filter.tag)">{{filter.tag}}</button></div>
     <div class="filter-blogs">
         <h3>Filter By Blogs</h3><button class="tag" data-ng-repeat="post in ctrl.posts | limitTo : 9">{{post.source}}</button></div>
@@ -58,7 +58,7 @@
                 <div class="post-stats" ng-if="yuphover">
                     <div id="comments"><i class="fas fa-comments"></i> 40</div>
                     <div id="spoons"><i class="fas fa-utensil-spoon"></i> 250</div>
-                    <div id="forks"><i class="fas fa-hand-middle-finger"></i> 90</div>
+                    <div id="forks"><i class="fas fa-heart-broken"></i> 90</div>
                 </div>
                 <div class="alpha-filter-mask" ng-style="{'background-image':'url(./assets/{{post.img}})'}"></div>
             </div>
@@ -68,7 +68,7 @@
                     <div id="category"><a href="/api/tags/{{post.tag}}">{{post.tag}}</a></div>
                 </div>
                 <div class="post-title">{{post.title}}</div>
-                <div class="social-share"><i class="fas fa-utensil-spoon"></i><i class="fas fa-hand-middle-finger"></i>
+                <div class="social-share"><i class="fas fa-utensil-spoon"></i><i class="fas fa-heart-broken"></i>
                     <!--<i class="fab fa-facebook-f"></i>
 <i class="fab fa-twitter"></i>-->
                     <!-- <i class="fab fa-snapchat-ghost"></i>--><i class="fab fa-pinterest-p"></i><i class="fab fa-tumblr"></i></div>
